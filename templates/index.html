@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chessboard.js with Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chessboard-1.0.0.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/chessboard-1.0.0.js') }}"></script>
+</head>
+<body>
+    <h1>Chessboard.js with Flask</h1>
+    <div id="board" style="width: 800px;"></div>
+
+    <script>
+        var initialPosition = "{{ initial_position }}";
+        var board = ChessBoard('board', {
+            position: initialPosition,
+            draggable: true,
+            pieceTheme: '/static/img/chesspieces/wikipedia/{piece}.png'
+        });
+    </script>
+    
+</body>
+</html>
