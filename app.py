@@ -17,7 +17,7 @@ def make_move():
 
     # Return a response to the client
     print(move)
-    response_data = {'message': 'Move successful'}
+    response_data = {'move': move}
     return jsonify(response_data)
 
 

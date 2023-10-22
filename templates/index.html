@@ -5,38 +5,11 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/chessboard-1.0.0.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ url_for('static', filename='js/chessboard-1.0.0.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </head>
 <body>
     <h1>Chessboard.js with Flask</h1>
     <div id="board" style="width: 800px;"></div>
-
-    <script>
-        var initialPosition = "{{ initial_position }}";
-        var board = ChessBoard('board', {
-            position: initialPosition,
-            draggable: true,
-            pieceTheme: '/static/img/chesspieces/wikipedia/{piece}.png',
-            onDrop: function (source, target, piece, newPos, oldPos, orientation) {
-            var move = source + '-' + target;
-
-            fetch('/make_move', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ move: move }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        }
-
-        });        
-    </script>
     
 </body>
 </html>
